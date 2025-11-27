@@ -1,3 +1,6 @@
+import type React from "react"
+
+
 export default function Skills() {
   const technicalSkills = ["Python", "C", "React", "JavaScript", "TypeScript", "HTML", "CSS", "Next.js"]
 
@@ -5,7 +8,14 @@ export default function Skills() {
 
   const otherSkills = ["Data Analysis", "Problem-Solving", "Project Management"]
 
-  const SkillTag = ({ skill }) => <span className="skill-tag">{skill}</span>
+type SkillTagProps = {
+  skill: string
+}
+
+const SkillTag: React.FC<SkillTagProps> = ({ skill }) => (
+  <span className="skill-tag">{skill}</span>
+)
+
 
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8">

@@ -1,7 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { Mail, Phone, MapPin, Github, Linkedin } from "lucide-react"
+import type React from "react"
+import { Github, Linkedin } from "lucide-react"
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -10,7 +11,9 @@ export default function Contact() {
     message: "",
   })
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target
     setFormData((prev) => ({
       ...prev,
@@ -18,7 +21,7 @@ export default function Contact() {
     }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     // Form submission logic can be added here
     console.log("Form submitted:", formData)
@@ -28,16 +31,18 @@ export default function Contact() {
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-(--foreground) mb-4 text-balance">Get in Touch</h2>
+        <h2 className="text-4xl font-bold text-(--foreground) mb-4 text-balance">
+          Get in Touch
+        </h2>
         <p className="text-lg text-(--muted-text) mb-12">
-          I'm open to internships, collaborations, and exciting projects. Let's connect.
+          I'm open to internships, collaborations, and exciting projects. Let's
+          connect.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div className="space-y-8">
             <div className="flex gap-4">
-              
               <div>
                 <h3 className="font-bold text-(--foreground) mb-1">Email</h3>
                 <p className="text-(--muted-text)">aravsarma@gmail.com</p>
@@ -45,7 +50,6 @@ export default function Contact() {
             </div>
 
             <div className="flex gap-4">
-              
               <div>
                 <h3 className="font-bold text-(--foreground) mb-1">Phone</h3>
                 <p className="text-(--muted-text)">(408) 628-8445</p>
@@ -53,7 +57,6 @@ export default function Contact() {
             </div>
 
             <div className="flex gap-4">
-              
               <div>
                 <h3 className="font-bold text-(--foreground) mb-1">Location</h3>
                 <p className="text-(--muted-text)">San Jose, CA</p>
@@ -86,7 +89,10 @@ export default function Contact() {
           {/* Contact Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-(--foreground) mb-2">
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-(--foreground) mb-2"
+              >
                 Name
               </label>
               <input
@@ -102,7 +108,10 @@ export default function Contact() {
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-(--foreground) mb-2">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-(--foreground) mb-2"
+              >
                 Email
               </label>
               <input
@@ -118,7 +127,10 @@ export default function Contact() {
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-(--foreground) mb-2">
+              <label
+                htmlFor="message"
+                className="block text-sm font-medium text-(--foreground) mb-2"
+              >
                 Message
               </label>
               <textarea
