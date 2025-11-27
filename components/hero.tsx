@@ -56,8 +56,8 @@ export default function Hero() {
           {/* Right Column - Profile Image */}
           <div className="flex justify-center">
             <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-(--accent-primary) shadow-lg">
-              <Image
-                src="/arav-sarma-website-github.io/public/arav-profile.jpg"                
+             <Image
+                src="/arav-sarma-website-github.io/arav-profile.jpg"
                 alt="Arav Sarma"
                 width={256}
                 height={256}
