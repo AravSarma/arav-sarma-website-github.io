@@ -9,7 +9,7 @@ export default function Hero() {
           {/* Left Column */}
           <div className="space-y-6">
             <div>
-              <h1 className="text-5xl md:text-6xl font-bold text-(--foreground) text-balance">Arav Sarma</h1>
+              <h1 className="text-5xl md:text-6xl font-bold text-foreground text-balance">Arav Sarma</h1>
               <p className="text-2xl md:text-3xl font-medium text-(--accent-primary) mt-2">
                 CS Student • Developer • Problem-Solver
               </p>
@@ -38,7 +38,7 @@ export default function Hero() {
                 href="https://www.linkedin.com/in/arav-sarma"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-lg hover:bg-(--card) transition-colors"
+                className="p-2 rounded-lg hover:bg-card transition-colors"
               >
                 <Linkedin size={24} color="var(--accent-primary)" />
               </a>
@@ -46,7 +46,7 @@ export default function Hero() {
                 href="https://github.com/AravSarma"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-lg hover:bg-(--card) transition-colors"
+                className="p-2 rounded-lg hover:bg-card transition-colors"
               >
                 <Github size={24} color="var(--accent-primary)" />
               </a>
@@ -56,12 +56,12 @@ export default function Hero() {
           {/* Right Column - Profile Image */}
           <div className="flex justify-center">
             <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-(--accent-primary) shadow-lg">
-             <Image
-                src="/arav-sarma-website-github.io/arav-profile.jpg"
-                alt="Arav Sarma"
+              <Image
+                src="/arav-sarma-website-github.io/arav-profile.jpg"                alt="Arav Sarma"
                 width={256}
                 height={256}
                 className="w-full h-full object-cover"
+                priority
               />
             </div>
           </div>
