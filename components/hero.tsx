@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { Github, Linkedin } from "lucide-react"
+import profilePic from "@/public/arav-profile.jpg"
 
 export default function Hero() {
   return (
@@ -57,7 +58,7 @@ export default function Hero() {
           <div className="flex justify-center">
             <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-(--accent-primary) shadow-lg">
               <Image
-                src="/arav-profile.jpg"
+                src={profilePic}
                 alt="Arav Sarma"
                 width={256}
                 height={256}

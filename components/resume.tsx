@@ -20,7 +20,7 @@ export default function Resume() {
           <div className="flex flex-col justify-center gap-6">
             <div>
               <h3 className="text-sm font-bold text-(--accent-primary) uppercase tracking-wide mb-2">Get My Resume</h3>
-              <a href="/Arav_Sarma_Resume.pdf" className="btn-primary flex items-center justify-center gap-2 w-full">
+              <a href="/Arav_resume.pdf" className="btn-primary flex items-center justify-center gap-2 w-full">
                 <Download size={20} />
                 Download PDF
               </a>
