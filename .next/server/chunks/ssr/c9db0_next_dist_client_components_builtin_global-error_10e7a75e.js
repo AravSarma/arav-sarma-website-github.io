@@ -1,3 +1,0 @@
-module.exports=[85113,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(82530);a.n(d("[project]/Desktop/arav-sarma-web/arav-sarma-website-github.io/node_modules/next/dist/client/components/builtin/global-error.js <module evaluation>"))},53701,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(82530);a.n(d("[project]/Desktop/arav-sarma-web/arav-sarma-website-github.io/node_modules/next/dist/client/components/builtin/global-error.js"))},16856,a=>{"use strict";a.i(85113);var b=a.i(53701);a.n(b)}];
-
-//# sourceMappingURL=c9db0_next_dist_client_components_builtin_global-error_10e7a75e.js.map
