@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #dfd9e2;
+  --background: #d8d5da;
   --foreground: #1e1b2f;
   --card: #f5eff7;
   --card-foreground: #1e1b2f;
@@ -12,11 +12,11 @@
   --popover-foreground: #1e1b2f;
   --primary: #4b3b6e;
   --primary-foreground: #ffffff;
-  --secondary: #f5eff7;
+  --secondary: #ccc8ce;
   --secondary-foreground: #1e1b2f;
-  --muted: #e0dae4;
+  --muted: #c7c0cc;
   --muted-foreground: #6b5b7a;
-  --accent: #e07a5f;
+  --accent: #575757;
   --accent-foreground: #1e1b2f;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
@@ -154,6 +154,65 @@
   .btn-primary:hover {
     @apply shadow-lg;
     transform: translateY(-2px);
+  }
+
+  .contact-cta {
+    position: relative;
+    display: inline-block;
+    padding: 12px 24px;
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    transition: all 0.2s ease-in;
+    overflow: hidden;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--foreground);
+    background: transparent;
+    isolation: isolate;
+  }
+
+  .contact-cta::before,
+  .contact-cta::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) scaleY(1) scaleX(1.25);
+    width: 140%;
+    border-radius: 50%;
+    display: block;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+    z-index: -1;
+  }
+
+  .contact-cta::before {
+    top: 100%;
+    height: 180%;
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .contact-cta::after {
+    top: 180%;
+    height: 190%;
+    width: 160%;
+    background-color: var(--accent);
+  }
+
+  .contact-cta:hover {
+    color: #ffffff;
+    border-color: var(--accent);
+  }
+
+  .contact-cta:hover::before {
+    top: -35%;
+    background-color: var(--accent);
+    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+  }
+
+  .contact-cta:hover::after {
+    top: -45%;
+    background-color: var(--accent);
+    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
   }
 
   .card-hover {

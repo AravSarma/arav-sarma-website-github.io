@@ -11,12 +11,12 @@ export default function Hero() {
           <div className="space-y-6">
             <div>
               <h1 className="text-5xl md:text-6xl font-bold text-foreground text-balance">Arav Sarma</h1>
-              <p className="text-2xl md:text-3xl font-medium text-(--accent-primary) mt-2">
-                CS Student • Developer • Problem-Solver
+              <p className="text-2xl md:text-3xl font-medium text-[var(--accent)] mt-2">
+                CS Student | Developer | Problem-Solver
               </p>
             </div>
 
-            <p className="text-lg text-(--muted-text) text-balance leading-relaxed">
+            <p className="text-lg text-[var(--muted-foreground)] text-balance leading-relaxed">
               I'm a Computer Science student at the University of Oregon with a passion for building innovative software
               solutions. Combining development expertise with entrepreneurial thinking, I'm driven by the intersection
               of AI and practical problem-solving.
@@ -28,7 +28,7 @@ export default function Hero() {
               </a>
               <a
                 href="#contact"
-                className="btn-primary bg-white text-(--accent-primary) border-2 border-(--accent-primary) hover:bg-(--card)"
+                className="contact-cta"
               >
                 Contact Me
               </a>
@@ -41,7 +41,7 @@ export default function Hero() {
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg hover:bg-card transition-colors"
               >
-                <Linkedin size={24} color="var(--accent-primary)" />
+                <Linkedin size={24} color="var(--accent)" />
               </a>
               <a
                 href="https://github.com/AravSarma"
@@ -49,14 +49,14 @@ export default function Hero() {
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg hover:bg-card transition-colors"
               >
-                <Github size={24} color="var(--accent-primary)" />
+                <Github size={24} color="var(--accent)" />
               </a>
             </div>
           </div>
 
           {/* Right Column - Profile Image */}
           <div className="flex justify-center">
-            <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-(--accent-primary) shadow-lg">
+            <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-[var(--accent)] shadow-lg">
               <Image
                 src={profilePic}
                 alt="Arav Sarma"
