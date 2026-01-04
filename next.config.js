@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === "production";
-
+const isGitHubPages = process.env.GITHUB_PAGES === "true";
 const repo = "AravSarma-Site";
 
 const nextConfig = {
@@ -8,8 +8,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: isProd ? `/${repo}` : "",
-  assetPrefix: isProd ? `/${repo}/` : "",
+  basePath: isProd && isGitHubPages ? `/${repo}` : "",
+  assetPrefix: isProd && isGitHubPages ? `/${repo}/` : "",
 };
 
 module.exports = nextConfig;
