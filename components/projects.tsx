@@ -1,0 +1,54 @@
+export default function Projects() {
+  const projects = [
+    {
+      title: "Think.ly",
+      description:
+        "A think-tank and employment platform connecting students with student-run businesses, enabling mentorship, networking, and career development opportunities.",
+      tech: ["React", "TypeScript", "Next.js", "Python", "SQL"],
+    },
+    {
+      title: "Echo AI",
+      description:
+        "A hackathon project featuring real-time AI-powered voice interaction with text and voice synthesis. Built an intuitive frontend and connected it to a dynamic AI backend.",
+      tech: ["Python", "AI/ML", "Voice Synthesis", "Real-time Processing"],
+    },
+    {
+      title: "Cardiovascular Disease Analysis",
+      description:
+        "Statistical modeling and data analysis on CHD risks for post-menopausal women on HRT using A/B testing, hypothesis testing, and bootstrapping.",
+      tech: ["Python", "Statistics", "Data Analysis", "Hypothesis Testing"],
+    },
+  ]
+
+  return (
+    <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-4xl font-bold text-(--foreground) mb-4 text-balance">Projects</h2>
+        <p className="text-lg text-(--muted-text) mb-12">Building and learning through applied projects</p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project, index) => (
+            <div
+              key={index}
+              className="bg-(--card) rounded-xl p-6 shadow-sm border border-(--border-color) card-hover flex flex-col"
+            >
+              <h3 className="text-xl font-bold text-(--accent-primary) mb-3">{project.title}</h3>
+              <p className="text-black mb-4 flex-grow leading-relaxed">{project.description}</p>
+
+              <div className="flex flex-wrap gap-2 mb-6">
+                {project.tech.map((tech, idx) => (
+                  <span
+                    key={idx}
+                    className="px-3 py-1 rounded-full text-xs font-medium bg-(--accent-primary) text-black"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

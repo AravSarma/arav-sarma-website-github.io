@@ -1,0 +1,238 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #d8d5da;
+  --foreground: #1e1b2f;
+  --card: #f5eff7;
+  --card-foreground: #1e1b2f;
+  --popover: #f5eff7;
+  --popover-foreground: #1e1b2f;
+  --primary: #4b3b6e;
+  --primary-foreground: #ffffff;
+  --secondary: #ccc8ce;
+  --secondary-foreground: #1e1b2f;
+  --muted: #c7c0cc;
+  --muted-foreground: #6b5b7a;
+  --accent: #575757;
+  --accent-foreground: #1e1b2f;
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: #c7bfd3;
+  --input: #f5eff7;
+  --ring: #4b3b6e;
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: #f5eff7;
+  --sidebar-foreground: #1e1b2f;
+  --sidebar-primary: #4b3b6e;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e07a5f;
+  --sidebar-accent-foreground: #1e1b2f;
+  --sidebar-border: #c7bfd3;
+  --sidebar-ring: #4b3b6e;
+}
+
+.dark {
+  --background: #1e1b2f;
+  --foreground: #f5eff7;
+  --card: #2a1f3d;
+  --card-foreground: #f5eff7;
+  --popover: #2a1f3d;
+  --popover-foreground: #f5eff7;
+  --primary: #b8a8d8;
+  --primary-foreground: #1e1b2f;
+  --secondary: #2a1f3d;
+  --secondary-foreground: #f5eff7;
+  --muted: #3d2d52;
+  --muted-foreground: #a399b0;
+  --accent: #e07a5f;
+  --accent-foreground: #1e1b2f;
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: #3d2d52;
+  --input: #2a1f3d;
+  --ring: #b8a8d8;
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: #1e1b2f;
+  --sidebar-foreground: #f5eff7;
+  --sidebar-primary: #b8a8d8;
+  --sidebar-primary-foreground: #1e1b2f;
+  --sidebar-accent: #e07a5f;
+  --sidebar-accent-foreground: #1e1b2f;
+  --sidebar-border: #3d2d52;
+  --sidebar-ring: #b8a8d8;
+}
+
+@theme inline {
+  --font-sans: "Inter", "DM Sans", sans-serif;
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  a {
+    @apply transition-colors duration-300;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply relative px-3 py-2 text-sm font-medium transition-colors;
+  }
+
+  .nav-link.active {
+    @apply text-primary;
+  }
+
+  .nav-link.active::after {
+    content: "";
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-primary;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 rounded-lg font-medium text-primary-foreground transition-all duration-300;
+    background-color: var(--primary);
+  }
+
+  .btn-primary:hover {
+    @apply shadow-lg;
+    transform: translateY(-2px);
+  }
+
+  .contact-cta {
+    position: relative;
+    display: inline-block;
+    padding: 12px 24px;
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    transition: all 0.2s ease-in;
+    overflow: hidden;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--foreground);
+    background: transparent;
+    isolation: isolate;
+  }
+
+  .contact-cta::before,
+  .contact-cta::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) scaleY(1) scaleX(1.25);
+    width: 140%;
+    border-radius: 50%;
+    display: block;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+    z-index: -1;
+  }
+
+  .contact-cta::before {
+    top: 100%;
+    height: 180%;
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .contact-cta::after {
+    top: 180%;
+    height: 190%;
+    width: 160%;
+    background-color: var(--accent);
+  }
+
+  .contact-cta:hover {
+    color: #ffffff;
+    border-color: var(--accent);
+  }
+
+  .contact-cta:hover::before {
+    top: -35%;
+    background-color: var(--accent);
+    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+  }
+
+  .contact-cta:hover::after {
+    top: -45%;
+    background-color: var(--accent);
+    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 rounded-xl;
+  }
+
+  .card-hover:hover {
+    @apply shadow-lg;
+    transform: translateY(-4px);
+  }
+
+  .skill-tag {
+    @apply px-4 py-2 rounded-full text-sm font-medium transition-all;
+    background-color: rgba(75, 59, 110, 0.1);
+    color: var(--primary);
+    border: 1px solid var(--border);
+  }
+
+  .skill-tag:hover {
+    @apply shadow-md;
+    background-color: rgba(75, 59, 110, 0.15);
+  }
+}
