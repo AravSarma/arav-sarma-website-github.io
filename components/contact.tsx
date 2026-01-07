@@ -4,12 +4,18 @@ import { useState } from "react"
 import type React from "react"
 import { Github, Linkedin } from "lucide-react"
 
+const ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? ""
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   })
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">(
+    "idle"
+  )
+  const [errorMessage, setErrorMessage] = useState("")
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -21,11 +27,51 @@ export default function Contact() {
     }))
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    // Form submission logic can be added here
-    console.log("Form submitted:", formData)
-    setFormData({ name: "", email: "", message: "" })
+    if (status === "submitting") return
+
+    if (!ACCESS_KEY) {
+      setErrorMessage("Missing Web3Forms access key.")
+      setStatus("error")
+      return
+    }
+
+    setStatus("submitting")
+    setErrorMessage("")
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: ACCESS_KEY,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: "New portfolio message",
+          from_name: "Portfolio Contact Form",
+          botcheck: "",
+        }),
+      })
+
+      const data = await response.json().catch(() => null)
+
+      if (!response.ok || !data?.success) {
+        setErrorMessage(data?.message ?? "Something went wrong. Please try again.")
+        setStatus("error")
+        return
+      }
+
+      setFormData({ name: "", email: "", message: "" })
+      setStatus("success")
+    } catch {
+      setErrorMessage("Unable to send right now. Please try again later.")
+      setStatus("error")
+    }
   }
 
   return (
@@ -102,6 +148,7 @@ export default function Contact() {
                 value={formData.name}
                 onChange={handleChange}
                 required
+                disabled={status === "submitting"}
                 className="w-full px-4 py-3 rounded-lg bg-(--card) border border-(--border-color) text-(--foreground) placeholder-(--muted-text) focus:outline-none focus:ring-2 focus:ring-(--accent-primary)"
                 placeholder="Your name"
               />
@@ -121,6 +168,7 @@ export default function Contact() {
                 value={formData.email}
                 onChange={handleChange}
                 required
+                disabled={status === "submitting"}
                 className="w-full px-4 py-3 rounded-lg bg-(--card) border border-(--border-color) text-(--foreground) placeholder-(--muted-text) focus:outline-none focus:ring-2 focus:ring-(--accent-primary)"
                 placeholder="your.email@example.com"
               />
@@ -140,14 +188,30 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 rows={5}
+                disabled={status === "submitting"}
                 className="w-full px-4 py-3 rounded-lg bg-(--card) border border-(--border-color) text-(--foreground) placeholder-(--muted-text) focus:outline-none focus:ring-2 focus:ring-(--accent-primary) resize-none"
                 placeholder="Tell me about your project or opportunity..."
               />
             </div>
 
-            <button type="submit" className="btn-primary w-full">
-              Send Message
+            <button
+              type="submit"
+              className="btn-primary w-full"
+              disabled={status === "submitting"}
+            >
+              {status === "submitting" ? "Sending..." : "Send Message"}
             </button>
+
+            {status === "success" && (
+              <p className="text-sm text-(--muted-text)" role="status">
+                Thanks! Your message was sent.
+              </p>
+            )}
+            {status === "error" && (
+              <p className="text-sm text-red-500" role="alert">
+                {errorMessage}
+              </p>
+            )}
           </form>
         </div>
       </div>
