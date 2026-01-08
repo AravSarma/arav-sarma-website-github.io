@@ -26,7 +26,7 @@ export default function Resume() {
                 Download PDF
               </Link>
             </div>
-            <p className="text-xs text-(--muted-text)">Last updated: November 2025</p>
+            <p className="text-xs text-(--muted-text)">Last updated: Jan 2026</p>
           </div>
         </div>
       </div>
